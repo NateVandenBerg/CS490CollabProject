@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Resource</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<h1 id="resource">Add New Resource</h1>
+<form id="newResourceForm">
+    <label for="email">Faculty Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="resourceName">Resource Name:</label><br>
+    <input type="text" id="resourceName" name="resourceName" required><br>
+
+    <label for="resourceDesc">Description:</label><br>
+    <textarea id="resourceDesc" name="resourceDesc" required></textarea><br>
+
+    <label>Keywords:</label><br>
+    <input type="text" id="keywordInput"><button type="button" id="addKeyword">Add Keyword</button><br>
+    <div id="keywordsList"></div>
+
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

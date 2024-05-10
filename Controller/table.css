@@ -1,0 +1,154 @@
+.container {
+    /*display: flex;*/
+    overflow: auto;
+}
+#db-search-container{
+    /*display: flex;*/
+    justify-content: space-between;
+    max-width: 70%;
+}
+#title {
+
+}
+
+#searchResults {
+    max-width: 95%;
+    border-collapse:collapse;
+    border-spacing: 0;
+    border: 2px solid #AEAEAE;
+    background-color: #f0f0f0;
+    /*min-height: 100px;*/
+}
+
+#results-table, table, thead {
+    max-width: 95%;
+}
+
+#keyword-menu {
+    display: flex;
+    max-width: 20%;
+    flex: 1;
+}
+
+/*#keywordmenu {*/
+/*    width: 100%;*/
+/*    flex: 1;*/
+/*}*/
+
+/*#searchResults {*/
+/*    max-width: 75%;*/
+/*    border-collapse:collapse;*/
+/*    border-spacing: 0;*/
+/*}*/
+form {
+    margin-bottom: 5px;
+}
+tr {
+    border: 2px solid #AEAEAE;
+    padding: 0px;
+}
+tbody{
+    border-collapse:collapse;
+}
+
+/*table{*/
+/*    */
+/*    border-spacing:0;*/
+/*}*/
+
+#results-head {
+    padding: 0px 5px 0px 5px;
+    border: 2px solid #AEAEAE;
+/*border: 1px solid black;*/
+/*border: 1px solid black;*/
+}
+
+/* Set a max height for paragraphs in the detail row and the keyword row */
+td {
+    /*max-height: 40px;*/
+    overflow: auto;
+    margin: 0;
+    padding: 0px 5px 0px 5px;
+    background-color: white;
+}
+
+#detailRow p {
+    max-height: 20px;
+    /*background-color: #f0f0f0; !* Light grey *!*/
+    padding: 5px;
+    margin: 0;
+    border-bottom: 0px;
+}
+
+.container {
+    display: flex;
+}
+
+#keyword-sidebar {
+    float: left;
+    width: 25%; /* Adjust the width as necessary */
+    min-width: 160px;
+    max-width: 300px;
+}
+
+#keywords p, #keywords td {
+    /*background-color: #f0f0f0; !* Light grey background for the keywords *!*/
+    margin: 0;
+    padding: 0;
+    border-bottom: 0px;
+    max-height: 300px;
+}
+
+.sb_keyword p, h4, .sb_keyword td {
+    margin: 0;
+    /*max-height: 60px;*/
+}
+
+.kw_sidebar_dept_table {
+    display: block; /* Make the table behave like a block element to apply max-height */
+    max-height: 500px; /* Set the maximum height of the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-collapse: collapse; /* Optional: for styling */
+    width: 100%; /* Optional: ensures the table fills its container */
+}
+
+.kw_sidebar_dept_table thead, .kw_sidebar_dept_table tbody, .kw_sidebar_dept_table th, .kw_sidebar_dept_table td {
+    display: block; /* Necessary for scrolling tbody */
+}
+
+.kwmenu_deptkw_list {
+    max-height: 400px; /* Set maximum height for tbody */
+    overflow-y: auto; /* Enable vertical scrolling for tbody */
+}
+.kwmenu_college {
+    border: 3px solid black;
+    color: black;
+    border-collapse: collapse;
+    margin: 5px;
+}
+.kwmenu_dept_name h4 {
+    border-bottom: 2px solid black;
+    color: white;
+    margin: 0px 8px 0px 8px;
+}
+.sb_keyword {
+    padding: 0px 8px 0px 8px;
+}
+.sb_keyword_p {
+    border-bottom: 1px dotted black;
+    color: blue;
+
+}
+
+.kw_sidebar_dept_table thead {
+    /* Fix thead to top: optional styles */
+}
+
+.kw_sidebar_dept_table th, .kw_sidebar_dept_table td, .kw_sidebar_dept_table tr {
+    /* Optional: Add styles for th and td */
+    width: auto; /* Adjust width as necessary */
+}
+
+.kw_sidebar_college div {
+    color: #0073ff;
+}

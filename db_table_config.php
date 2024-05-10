@@ -1,0 +1,9 @@
+<?php
+// db_table_config.php
+
+$queryTableDetails = 'select COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, 
+       NUMERIC_PRECISION, DATETIME_PRECISION, 
+       IS_NULLABLE 
+from INFORMATION_SCHEMA.COLUMNS
+where TABLE_NAME= ?';
+?>

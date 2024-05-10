@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Collaboration Post</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+<h1>Create New Collaboration Post</h1>
+<form id="collabPostForm">
+  <label for="email">Faculty Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="collab_postName">Post Title:</label><br>
+  <input type="text" id="collab_postName" name="collab_postName" required><br>
+  <label for="collab_postDesc">Description:</label><br>
+  <textarea id="collab_postDesc" name="collab_postDesc" required></textarea><br>
+  <label>Keywords:</label><br>
+  <input type="text" id="keywordInput"><button type="button" id="addKeyword">Add Keyword</button><br>
+  <div id="keywordsList"></div>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

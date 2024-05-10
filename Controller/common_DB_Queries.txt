@@ -1,0 +1,136 @@
+CREATE TABLE `faculty_tags` ( 
+	`keyword` VARCHAR(767) NOT NULL, 
+	PRIMARY KEY (`keyword`) 
+);
+
+CREATE TABLE `faculty_keyword_relation` (
+  `user_id` INT(200),
+  `keyword` VARCHAR(767),
+  PRIMARY KEY (`user_id`, `keyword`),
+  FOREIGN KEY (`user_id`) REFERENCES `faculty`(`user_id`),
+  FOREIGN KEY (`keyword`) REFERENCES `faculty_tags`(`keyword`)
+);
+
+CHABSS: College of Humanities, Arts, Behavioral & Social Sciences
+CoBA: College of Business Administration
+CSTEM: College of Science, Technology, Engineering & Mathematics
+CEHHS: College of Education, Health and Human Services
+
+CREATE TABLE `college` ( 
+`college_id` INT AUTO_INCREMENT NOT NULL, 
+`college_name` VARCHAR(20) NOT NULL, 
+Primary KEY (`college_id`), 
+UNIQUE KEY `college_name_unique` (`college_name`) 
+);
+
+INSERT INTO `college` (`college_name`)
+VALUES 
+('CHABSS: College of Humanities, Arts, Behavioral & Social Sciences'),
+('CoBA: College of Business Administration'),
+('CSTEM: College of Science, Technology, Engineering & Mathematics'),
+('CEHHS: College of Education, Health and Human Services');
+
+UPDATE `department` d
+JOIN `college` c ON c.college_id = d.college_id
+SET c.`college_name` = d.`college_name`;
+
+UPDATE `faculty` f
+JOIN `Department` d ON f.department = d.department_name
+SET f.`department_id` = d.`department_id`;
+
+ALTER TABLE `department`
+ADD CONSTRAINT `fk_college_id`
+FOREIGN KEY (`college_id`) REFERENCES `college`(`college_id`)
+ON DELETE SET NULL ON UPDATE CASCADE;
+
+
+
+
+----------------------Show tags by college_name (LIKE)----------------------
+SELECT faculty_tags.* FROM faculty_tags 
+JOIN faculty_keyword_relation ON faculty_tags.keyword = faculty_keyword_relation.keyword 
+JOIN faculty ON faculty_keyword_relation.user_id = faculty.user_id 
+JOIN department ON faculty.department_id = department.department_id 
+JOIN college ON department.college_id = college.college_id WHERE college.college_id LIKE '%COBA%';
+
+_-_-_-_-_-_-_-_-_-_PHP_-_-_-_-_-_-_-_-_-_
+$sql = "SELECT faculty_tags.* FROM faculty_tags \n"
+
+    . "JOIN faculty_keyword_relation ON faculty_tags.keyword = faculty_keyword_relation.keyword \n"
+
+    . "JOIN faculty ON faculty_keyword_relation.user_id = faculty.user_id \n"
+
+    . "JOIN department ON faculty.department_id = department.department_id \n"
+
+    . "JOIN college ON department.college_id = college.college_id WHERE college.college_id LIKE \'%COBA%\';";
+
+
+----------------------Show tags by department_name (LIKE)----------------------
+SELECT faculty_tags.* FROM faculty_tags 
+JOIN faculty_keyword_relation ON faculty_tags.keyword = faculty_keyword_relation.keyword 
+JOIN faculty ON faculty_keyword_relation.user_id = faculty.user_id 
+JOIN department ON faculty.department_id = department.department_id 
+WHERE department.department_name LIKE '%scie%';
+
+_-_-_-_-_-_-_-_-_-_PHP_-_-_-_-_-_-_-_-_-_
+$sql = "SELECT faculty_tags.* FROM faculty_tags \n"
+
+    . "JOIN faculty_keyword_relation ON faculty_tags.keyword = faculty_keyword_relation.keyword \n"
+
+    . "JOIN faculty ON faculty_keyword_relation.user_id = faculty.user_id \n"
+
+    . "JOIN department ON faculty.department_id = department.department_id \n"
+	
+	. "WHERE department.department_name LIKE \'%scie%\';";
+	
+	
+----------------------Show faculty by college_name----------------------
+SELECT faculty.* FROM faculty 
+JOIN department ON faculty.department_id = department.department_id 
+JOIN college on department.college_id = college.college_id 
+WHERE college.college_name LIKE '%cehhs%';
+
+_-_-_-_-_-_-_-_-_-_PHP_-_-_-_-_-_-_-_-_-_
+$sql = "SELECT faculty.* FROM faculty \n"
+
+    . "JOIN department ON faculty.department_id = department.department_id \n"
+
+    . "JOIN college on department.college_id = college.college_id \n"
+
+    . "WHERE college.college_name LIKE \'%cehhs%\';";
+	
+----------------------Show faculty by faculty_tags.keyword----------------------
+SELECT faculty.* FROM faculty 
+JOIN faculty_keyword_relation ON faculty.user_id = faculty_keyword_relation.user_id 
+JOIN faculty_tags ON faculty_keyword_relation.keyword = faculty_tags.keyword 
+WHERE faculty_tags.keyword LIKE '%phys%';
+
+_-_-_-_-_-_-_-_-_-_PHP_-_-_-_-_-_-_-_-_-_
+$sql = "SELECT faculty.* FROM faculty \n"
+
+    . "JOIN faculty_keyword_relation ON faculty.user_id = faculty_keyword_relation.user_id \n"
+
+    . "JOIN faculty_tags ON faculty_keyword_relation.keyword = faculty_tags.keyword \n"
+
+    . "WHERE faculty_tags.keyword LIKE \'%phys%\';";
+
+----------------------Show faculty by faculty_tags.keyword with department_name & college_name----------------------
+SELECT faculty.*, department.department_name, college.college_name FROM faculty
+JOIN faculty_keyword_relation ON faculty.user_id = faculty_keyword_relation.user_id
+JOIN faculty_tags ON faculty_keyword_relation.keyword = faculty_tags.keyword
+JOIN department ON faculty.department_id = department.department_id
+JOIN college ON department.college_id = college.college_id 
+WHERE faculty_tags.keyword LIKE '%phys%';
+
+_-_-_-_-_-_-_-_-_-_PHP_-_-_-_-_-_-_-_-_-_
+$sql = "SELECT faculty.*, department.department_name, college.college_name FROM faculty\n"
+
+    . "JOIN faculty_keyword_relation ON faculty.user_id = faculty_keyword_relation.user_id\n"
+
+    . "JOIN faculty_tags ON faculty_keyword_relation.keyword = faculty_tags.keyword\n"
+
+    . "JOIN department ON faculty.department_id = department.department_id\n"
+
+    . "JOIN college ON department.college_id = college.college_id \n"
+
+    . "WHERE faculty_tags.keyword LIKE \'%phys%\';";

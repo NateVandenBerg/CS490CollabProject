@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Database Search</title>
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="SearchBar_Style.css"/>
+</head>
+<body>
+<div class="container" id="main">
+    <div id="keyword-menu">
+        <div id="keywordmenu" class="keywordmenu">
+            <p></p>
+        </div>
+        <script src="KeywordSidebar.js"></script>
+    </div>
+    <div id="db-search-container">
+        <div id="title">
+            <h1>Database Search</h1>
+            <!-- Search Bar start -->
+            <div id="search-bar" class="search-bar">
+                <!-- Dropdown start -->
+                <div class="dropdown">
+                    <div id="drop-text" class="dropdown-text">
+                        <span id="span">Everything</span>
+                        <i id="icon" class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <ul id="list" class="dropdown-list">
+                        <li class="dropdown-list-item">Everything</li>
+                        <li class="dropdown-list-item">Faculty</li>
+                        <li class="dropdown-list-item">Community Collaborators</li>
+                        <li class="dropdown-list-item">Resources</li>
+                        <li class="dropdown-list-item">Collaboration Posts</li>
+                    </ul>
+                </div>
+                <!-- Dropdown ends -->
+
+                <!-- Search box input start -->
+                <div class="search-box">
+                    <form action="search.php" method="post" id="searchForm">
+                        <input type="text" name="keyword" id="keyword" placeholder="Search anything..." />
+                    </form>
+                    <i class="fa-solid fa-magnifying-glass"><button type="submit"></button></i>
+                </div>
+                <!-- Search box input ends -->
+            </div>
+            <!-- Search Bar ends -->
+
+<!--            <script src="SearchBar_javascript.js"></script>-->
+            <!--                -->
+            <!--                <form action="search.php" method="post" id="searchForm">-->
+            <!--                    <label for="keyword">Keyword:</label>-->
+            <!--                    <input type="text" name="keyword" id="keyword" placeholder="Enter search term to find profile...">-->
+            <!--                    <button type="submit">Search</button>-->
+            <!--                </form>-->
+
+            <p id="results-count"></p>
+        </div>
+        <div id="results-table">
+            <script src="script.js"></script>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
